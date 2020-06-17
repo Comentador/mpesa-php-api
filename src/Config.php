@@ -117,7 +117,7 @@ class Config implements ConfigInterface
     {
         $key = "-----BEGIN PUBLIC KEY-----\n";
         $key .= wordwrap($this->getPublicKey(), 60, "\n", true);
-        $key .= "\n-----END PUBLIC KEY-----";
+        $key .= "-----END PUBLIC KEY-----";
         $pk = openssl_get_publickey($key);
         openssl_public_encrypt($this->getApiKey(), $token, $pk, OPENSSL_PKCS1_PADDING);
         return 'Bearer ' . base64_encode($token);
